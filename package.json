@@ -6,9 +6,12 @@
     "author": "saltylassi <illke@naver.com>",
     "license": "MIT",
     "dependencies": {
+        "babelify": "^10.0.0",
+        "del": "^6.0.0",
         "express": "^4.17.1",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^7.0.1",
+        "gulp-browserify": "^0.5.1",
         "gulp-csso": "^4.0.1",
         "gulp-sass": "^4.1.0",
         "morgan": "^1.10.0",
@@ -18,7 +21,7 @@
         "socket.io": "^3.1.1"
     },
     "scripts": {
-        "dev:server": "nodemon --exec babel-node src/server -w",
+        "dev:server": "nodemon --exec babel-node src/server -w --ignore assets/ --ignore src/static",
         "dev:assets": "gulp"
     },
     "devDependencies": {
