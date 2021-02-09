@@ -10,8 +10,10 @@ html(lang="en")
             form#jsLogin
                 input(placeholder="name",type="text")
         .gameContainer#jsGame 
-            h1 donedasdas
-            div#jsNotifications
+            .chat
+                ul.chat__messages#jsMessages 
+                form.chat__form#jsSendMsg
+                    input(placeholder="Write a message",type="text")
         script.
             window.events = !{events} //event를 window의 전역변수로 설정
         script(src="/socket.io/socket.io.js")
