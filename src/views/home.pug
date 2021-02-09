@@ -6,6 +6,13 @@ html(lang="en")
         link(rel="stylesheet",href="styles/styles.css")
         title cloneMind
     body
-        h1 dddd
+        .loginBox#jsLogin 
+            form#jsLogin
+                input(placeholder="name",type="text")
+        .gameContainer#jsGame 
+            h1 donedasdas
+            div#jsNotifications
+        script.
+            window.events = !{events} //event를 window의 전역변수로 설정
         script(src="/socket.io/socket.io.js")
         script(src="/js/main.js")
