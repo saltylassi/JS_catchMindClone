@@ -1,5 +1,6 @@
 import { handleNewMsg } from "./chat";
 import { handleDisconnected, handleNewUser } from "./notifications";
+import { handleBeganPath, handleFilled, handleStrokedPath } from "./paint";
 
 let socket = null;
 
@@ -7,16 +8,15 @@ export const getSocket = () => {
     return socket;
 };
 
-export const updateSocket = (clientSocket) => {
-    return (socket = clientSocket);
-};
-
 export const initSockets = (clientSocket) => {
     const { events } = window;
-    updateSocket(clientSocket);
+    socket = clientSocket;
     clientSocket.on(events.newUser, handleNewUser);
     clientSocket.on(events.disconnected, handleDisconnected);
     clientSocket.on(events.newMsg, handleNewMsg);
+    clientSocket.on(events.beganPath, handleBeganPath);
+    clientSocket.on(events.strokedPath, handleStrokedPath);
+    clientSocket.on(events.filled, handleFilled);
 
     //주의
     //핸들러에서 받는 인자는 비구조화 후 key값으로 검사하기때문에 일치해야함
