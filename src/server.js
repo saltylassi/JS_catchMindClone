@@ -26,5 +26,5 @@ const io = socketIO(server);
 
 io.on("connection", (socket) => {
     // console.log(socket);
-    return socketController(socket);
+    return socketController(socket, io);
 });
