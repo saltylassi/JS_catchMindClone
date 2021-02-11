@@ -91,15 +91,6 @@ const fill = (color = null) => {
     ctx.fillStyle = currentColor;
 };
 
-if (canvas) {
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mousedown", startPainting);
-    canvas.addEventListener("mouseup", stopPainting);
-    canvas.addEventListener("mouseleave", stopPainting);
-    canvas.addEventListener("click", handleCanvasClick);
-    canvas.addEventListener("contextmenu", handleCM);
-}
-
 Array.from(colors).forEach((color) => color.addEventListener("click", handleColorClick));
 
 if (mode) {
@@ -109,3 +100,23 @@ if (mode) {
 export const handleBeganPath = ({ x, y }) => beginPath(x, y);
 export const handleStrokedPath = ({ x, y, color }) => strokePath(x, y, color);
 export const handleFilled = ({ color }) => fill(color);
+export const disableCanvas = () => {
+    canvas.removeEventListener("mousemove", onMouseMove);
+    canvas.removeEventListener("mousedown", startPainting);
+    canvas.removeEventListener("mouseup", stopPainting);
+    canvas.removeEventListener("mouseleave", stopPainting);
+    canvas.removeEventListener("click", handleCanvasClick);
+};
+
+export const enableCanvas = () => {
+    canvas.addEventListener("mousemove", onMouseMove);
+    canvas.addEventListener("mousedown", startPainting);
+    canvas.addEventListener("mouseup", stopPainting);
+    canvas.addEventListener("mouseleave", stopPainting);
+    canvas.addEventListener("click", handleCanvasClick);
+};
+
+if (canvas) {
+    enableCanvas();
+    canvas.addEventListener("contextmenu", handleCM);
+}

@@ -1,7 +1,7 @@
 import { handleNewMsg } from "./chat";
 import { handleDisconnected, handleNewUser } from "./notifications";
 import { handleBeganPath, handleFilled, handleStrokedPath } from "./paint";
-import { handlePlayerUpdate } from "./players";
+import { handleGameStarted, handlePlayerUpdate } from "./players";
 
 let socket = null;
 
@@ -19,6 +19,7 @@ export const initSockets = (clientSocket) => {
     clientSocket.on(events.strokedPath, handleStrokedPath);
     clientSocket.on(events.filled, handleFilled);
     clientSocket.on(events.playerUpdate, handlePlayerUpdate);
+    clientSocket.on(events.gameStarted, handleGameStarted);
 
     //주의
     //핸들러에서 받는 인자는 비구조화 후 key값으로 검사하기때문에 일치해야함
