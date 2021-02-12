@@ -24,6 +24,14 @@ export const handleNewMsg = ({ message, nickname }) => {
     return appendMsg(message, nickname);
 };
 
+export const disableChat = () => {
+    msgForm.style.display = "none";
+};
+
+export const enableChat = () => {
+    msgForm.style.display = "flex";
+};
+
 if (msgForm) {
     msgForm.addEventListener("submit", handleSendMsg);
 }
